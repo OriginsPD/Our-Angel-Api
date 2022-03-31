@@ -1,0 +1,39 @@
+models:
+  Guardian:
+    user_id: id foreign:users
+    trn: bigInteger
+    relationships:
+      hasMany: RegisteredStudent
+
+  StudentDirectory:
+    first_name: string:400
+    last_name: string:400
+    registered_status: boolean
+    studentCard_id: bigInteger
+    relationships:
+      hasMany: RegisteredStudent,IssuedVoucher,VoucherHistory
+
+  RegisteredStudent:
+    student_dir_id: id foreign:student_directories
+    guardian_id: id foreign:guardians
+    relationships:
+      hasMany: IssuedVoucher,VoucherHistory
+
+  Voucher:
+    name: string:400
+    quantity: integer
+    price: decimal:8,2
+
+  IssuedVoucher:
+    student_reg_id: id foreign:registered_students
+    name: string:400
+    quantity: integer
+    price: decimal:8,2
+
+  VoucherHistory:
+    student_reg_id: id foreign:registered_students
+    name: string:400
+    quantity: integer
+    price: decimal:8,2
+
+seeders: StudentDirectory
