@@ -2,10 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IssuedController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\IssuedController;
+use App\Http\Controllers\Api\HistoryController;
 use App\Http\Controllers\Api\VoucherController;
+use App\Http\Controllers\Api\RegisterStudentController;
 use App\Http\Controllers\Api\StudentDirectoryController;
 
 /*
@@ -32,11 +34,17 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Guardian Controller
     Route::apiResource('/guardian', UserController::class);
 
+    // Registered Student Controller
+    Route::apiResource('/register-student', RegisterStudentController::class);
+
     // Voucher Controller Create View Show Edit
     Route::apiResource('/voucher', VoucherController::class);
 
     // Issued Voucher Controller Create View Show 
     Route::apiResource('/issue', IssuedController::class);
+
+    // History Voucher Controller Create View Show 
+    Route::apiResource('/voucher-history', HistoryController::class);
 
     // Delete Token And Logout User
     Route::get('/logout', [AuthController::class, 'logout']);
