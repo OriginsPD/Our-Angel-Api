@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class VoucherHistory extends Model
 {
@@ -34,6 +34,7 @@ class VoucherHistory extends Model
 
     public function studentReg()
     {
-        return $this->belongsTo(RegisteredStudent::class);
+        return $this->belongsTo(RegisteredStudent::class)
+            ->has('studentDir')->with('studentDir');
     }
 }

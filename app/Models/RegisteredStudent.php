@@ -32,7 +32,7 @@ class RegisteredStudent extends Model
 
     public function issuedVouchers()
     {
-        return $this->hasMany(IssuedVoucher::class);
+        return $this->hasMany(IssuedVoucher::class, 'student_reg_id', 'id');
     }
 
     public function voucherHistories()

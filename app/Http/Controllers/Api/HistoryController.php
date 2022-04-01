@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Models\IssuedVoucher;
+use App\Models\VoucherHistory;
+use App\Http\Controllers\Controller;
 
-class IssuedController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class IssuedController extends Controller
      */
     public function index()
     {
-        return IssuedVoucher::all();
+        return VoucherHistory::with('studentReg')->get();
     }
 
     /**
@@ -31,10 +32,10 @@ class IssuedController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\IssuedVoucher  $issuedVoucher
+     * @param  \App\Models\VoucherHistory  $voucherHistory
      * @return \Illuminate\Http\Response
      */
-    public function show(IssuedVoucher $issuedVoucher)
+    public function show(VoucherHistory $voucherHistory)
     {
         //
     }
@@ -43,10 +44,10 @@ class IssuedController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\IssuedVoucher  $issuedVoucher
+     * @param  \App\Models\VoucherHistory  $voucherHistory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IssuedVoucher $issuedVoucher)
+    public function update(Request $request, VoucherHistory $voucherHistory)
     {
         //
     }
@@ -54,10 +55,10 @@ class IssuedController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\IssuedVoucher  $issuedVoucher
+     * @param  \App\Models\VoucherHistory  $voucherHistory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IssuedVoucher $issuedVoucher)
+    public function destroy(VoucherHistory $voucherHistory)
     {
         //
     }

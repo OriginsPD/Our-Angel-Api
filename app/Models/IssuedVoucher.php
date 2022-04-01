@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class IssuedVoucher extends Model
 {
@@ -34,6 +34,6 @@ class IssuedVoucher extends Model
 
     public function studentReg()
     {
-        return $this->belongsTo(RegisteredStudent::class);
+        return $this->belongsTo(RegisteredStudent::class, 'student_reg_id', 'id');
     }
 }

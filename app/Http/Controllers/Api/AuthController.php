@@ -35,8 +35,6 @@ class AuthController extends Controller
             ? $token = auth()->user()->createToken($this->tokenName)->plainTextToken
             : $errors = trans('auth.failed');
 
-
-
         $responseBody = [
             'user' => auth()->user(),
             'token' => ($token) ?? 'No Token Created'
